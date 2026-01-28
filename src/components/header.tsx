@@ -64,9 +64,9 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-24 items-center justify-between">
+      <div className="container flex h-28 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/image.png" alt="Transportes Parra e Hijos" width={240} height={50} className="h-20 object-contain" />
+          <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={300} height={62} className="h-24 object-contain" />
         </Link>
         <div className="hidden md:flex">
           <NavLinks />
@@ -82,7 +82,7 @@ export default function Header() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="p-4">
                 <Link href="/" className="flex items-center gap-2 mb-8" onClick={() => setMobileMenuOpen(false)}>
-                  <Image src="/image.png" alt="Transportes Parra e Hijos" width={240} height={50} className="h-20 object-contain" />
+                  <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={300} height={62} className="h-24 object-contain" />
                 </Link>
                 <NavLinks className="flex-col items-start gap-4" />
               </div>
