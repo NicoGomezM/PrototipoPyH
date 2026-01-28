@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { Truck, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -65,8 +66,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Truck className="h-7 w-7 text-primary" />
-          <span className="font-bold text-lg hidden sm:inline-block">Transportes Parra e Hijos</span>
+          <Image src="/logo.png" alt="Transportes Parra e Hijos" width={240} height={50} className="h-12 object-contain" />
         </Link>
         <div className="hidden md:flex">
           <NavLinks />
@@ -81,9 +81,8 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="p-4">
-                <Link href="/" className="flex items-center gap-2 mb-8">
-                  <Truck className="h-7 w-7 text-primary" />
-                  <span className="font-bold text-lg">Transportes Parra e Hijos</span>
+                <Link href="/" className="flex items-center gap-2 mb-8" onClick={() => setMobileMenuOpen(false)}>
+                  <Image src="/logo.png" alt="Transportes Parra e Hijos" width={240} height={50} className="h-12 object-contain" />
                 </Link>
                 <NavLinks className="flex-col items-start gap-4" />
               </div>

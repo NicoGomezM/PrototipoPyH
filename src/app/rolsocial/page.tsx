@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Leaf, Users, Heart } from 'lucide-react';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export const metadata: Metadata = {
   title: 'Rol Social - Transportes Parra e Hijos',
@@ -8,6 +8,8 @@ export const metadata: Metadata = {
 };
 
 export default function RolSocialPage() {
+  const socialImage = PlaceHolderImages.find((img) => img.id === 'rol-social-team');
+
   return (
     <div className="container mx-auto px-4 py-16">
       <div className="text-center mb-12">
@@ -17,47 +19,26 @@ export default function RolSocialPage() {
         </p>
       </div>
 
-       <div className="grid gap-8 md:grid-cols-3">
-        <Card>
-          <CardHeader>
-            <Users className="h-10 w-10 text-primary mb-2" />
-            <CardTitle>Apoyo a la Comunidad Local</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground">
-              Participamos activamente en iniciativas locales que promueven el desarrollo social y económico.
-            </p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <Leaf className="h-10 w-10 text-primary mb-2" />
-            <CardTitle>Sostenibilidad</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground">
-              Implementamos prácticas sostenibles para proteger nuestro entorno para las futuras generaciones.
-            </p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <Heart className="h-10 w-10 text-primary mb-2" />
-            <CardTitle>Bienestar del Equipo</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground">
-              Priorizamos el bienestar y el desarrollo profesional de todos nuestros colaboradores.
-            </p>
-          </CardContent>
-        </Card>
+       <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="space-y-4 text-muted-foreground">
+          <p>
+            TRANSPORTES PARRA E HIJOS Y CIA. LIMITADA dentro de sus operaciones y de los movimientos propios de su giro, cuenta con una red de apoyo laboral a una serie de distintos y pequeños empresarios de transporte, a los cuales se les reune y trabajan bajo nuestro amparo, se les ofrece trabajo y en algunos casos se administra sus camiones sumándolos a nuestra flota y generando empleo para sus familias, las cuales cuentan con una fuente de trabajo segura para gran parte del año.
+          </p>
+        </div>
+        <div>
+          {socialImage && (
+            <Image
+              src={socialImage.imageUrl}
+              alt={socialImage.description}
+              width={600}
+              height={450}
+              className="rounded-lg object-cover shadow-lg mx-auto"
+              data-ai-hint={socialImage.imageHint}
+            />
+          )}
+        </div>
       </div>
 
-      <div className="mt-12 text-center p-6 bg-background rounded-lg">
-          <p className="text-muted-foreground">
-            Estamos documentando nuestras actividades y programas sociales. Más información próximamente.
-          </p>
-      </div>
     </div>
   );
 }

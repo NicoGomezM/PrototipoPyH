@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>&copy; {year} Transportes Parra e Hijos. Todos los derechos reservados.</p>
+          <p>&copy; 2010 - {year} Transportes Parra e Hijos. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

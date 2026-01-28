@@ -9,11 +9,9 @@ export const metadata: Metadata = {
 
 export default function ClientesPage() {
   const clients = [
-    'Constructora XYZ',
-    'Ingeniería y Proyectos S.A.',
-    'Materiales del Sur',
-    'Desarrollos Urbanos Chile',
-    'Grandes Obras Civiles',
+    'FORESTAL MININCO S.A.',
+    'FORESTAL AGRICOLA MONTE AGUILA S.A.',
+    'CMPC CELULOSA S.A. GERENCIA COMPRA MADERAS',
   ];
 
   return (
@@ -21,7 +19,7 @@ export default function ClientesPage() {
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold font-headline">Nuestros Clientes</h1>
         <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-          La confianza de nuestros clientes es nuestro mayor activo. Nos enorgullece colaborar con empresas líderes en el sector de la construcción.
+          Producto del constante trabajo, responsabilidad y seriedad entregada por nuestra empresa, hoy día podemos decir con orgullo quienes conforman nuestro selecto grupo de clientes, los cuales son aval indiscutido de la calidad de nuestro servicio.
         </p>
       </div>
       <Card>
@@ -33,9 +31,9 @@ export default function ClientesPage() {
         </CardHeader>
         <CardContent>
           <p className="mb-6 text-muted-foreground">
-            A lo largo de nuestra trayectoria, hemos tenido el privilegio de trabajar con una diversa cartera de clientes, desde grandes constructoras hasta proveedores locales. Contenido sobre clientes próximamente...
+            Entre algunos podemos destacar:
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-center">
             {clients.map((client) => (
               <div key={client} className="p-4 bg-background rounded-lg border">
                 <p className="font-semibold text-sm">{client}</p>

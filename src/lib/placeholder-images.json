@@ -47,6 +47,30 @@
       "description": "A person on the phone in a logistics office.",
       "imageUrl": "https://images.unsplash.com/photo-1703669020898-428cc4765bbe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxvZmZpY2UlMjBjb250YWN0fGVufDB8fHx8MTc2OTYxNjMwN3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "office contact"
+    },
+    {
+      "id": "flota-forestal",
+      "description": "A truck for forestry transport.",
+      "imageUrl": "https://images.unsplash.com/photo-1713980056465-1d8185690526?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmb3Jlc3QlMjB0cnVja3xlbnwwfHx8fDE3Njk2MTY4NTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "forest truck"
+    },
+    {
+      "id": "flota-carguio",
+      "description": "A truck being loaded in a forest.",
+      "imageUrl": "https://images.unsplash.com/photo-1760181925370-21ecb4560bee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsb2dnaW5nJTIwY3JhbmV8ZW58MHx8fHwxNzY5NjE2ODUxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "logging crane"
+    },
+    {
+      "id": "flota-carretera",
+      "description": "A truck on a highway.",
+      "imageUrl": "https://images.unsplash.com/photo-1709735133497-bbead76953a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxoaWdod2F5JTIwdHJ1Y2t8ZW58MHx8fHwxNzY5NTk4OTkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "highway truck"
+    },
+    {
+      "id": "rol-social-team",
+      "description": "A company soccer team posing for a photo.",
+      "imageUrl": "https://images.unsplash.com/photo-1571080096581-53aefc318ac3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzb2NjZXIlMjB0ZWFtfGVufDB8fHx8MTc2OTYwOTI5OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "soccer team"
     }
   ]
 }
