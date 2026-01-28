@@ -125,10 +125,10 @@ export default function Header() {
   }, [stopScrolling]);
 
   const NavLinks = ({ className, onLinkClick }: { className?: string; onLinkClick?: () => void }) => {
-    const linkClasses = "relative flex items-center gap-2 py-2 text-sm font-medium uppercase tracking-wider transition-colors hover:text-primary after:absolute after:bottom-[-2px] after:left-0 after:h-[3px] after:w-0 after:bg-primary after:transition-all after:duration-250 after:ease-in-out after:content-[''] hover:after:w-full";
+    const linkClasses = "relative flex items-center gap-2 py-2 font-medium uppercase tracking-wider transition-colors hover:text-primary after:absolute after:bottom-[-2px] after:left-0 after:h-[3px] after:w-0 after:bg-primary after:transition-all after:duration-250 after:ease-in-out after:content-[''] hover:after:w-full";
 
     return (
-      <nav className={cn('flex items-center gap-x-6', className)}>
+      <nav className={cn('flex items-center gap-x-8', className)}>
         {navigationLinks.map((link) => {
           const isActive = !link.external && pathname === link.href;
           if (link.external) {
@@ -185,7 +185,7 @@ export default function Header() {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-            <NavLinks className="justify-start px-8" onLinkClick={() => {}} />
+            <NavLinks className="justify-center" onLinkClick={() => {}} />
           </div>
            {canScrollRight && (
             <div className="absolute right-0 top-1/2 -translate-y-1/2 h-full w-12 bg-gradient-to-l from-background to-transparent pointer-events-none z-10 flex items-center justify-end">
@@ -205,7 +205,7 @@ export default function Header() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="p-4">
                 <Link href="/" className="flex items-center gap-2 mb-8" onClick={() => setMobileMenuOpen(false)}>
-                  <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-24 object-contain" />
+                  <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-16 object-contain" />
                 </Link>
                 <NavLinks className="flex-col items-start gap-4" onLinkClick={() => setMobileMenuOpen(false)} />
               </div>
