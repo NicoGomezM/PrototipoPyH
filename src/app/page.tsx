@@ -92,7 +92,7 @@ export default function Home() {
                 Contamos con una flota moderna y un equipo de profesionales dedicados a brindar un servicio de excelencia, adaptándonos a las necesidades específicas de cada proyecto.
               </p>
               <Button asChild variant="link" className="mt-4 px-0 text-primary">
-                <Link href="/galeria">
+                <Link href="/flota">
                   Ver nuestra flota <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>

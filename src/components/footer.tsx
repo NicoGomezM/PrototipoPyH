@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-16 object-contain" />
+              <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-40 object-contain" />
             </Link>
             <p className="text-sm text-muted-foreground">
               Líderes en transporte y logística para la construcción.

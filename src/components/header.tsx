@@ -174,7 +174,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center">
         <Link href="/" className="flex-shrink-0 flex items-center gap-2">
-          <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-16 w-auto object-contain" />
+          <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-32 w-auto object-contain" />
         </Link>
         
         <div className="hidden md:flex items-center min-w-0 relative ml-auto">
