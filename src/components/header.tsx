@@ -172,12 +172,12 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-20 items-center justify-between">
+      <div className="container flex h-20 items-center">
         <Link href="/" className="flex-shrink-0 flex items-center gap-2">
           <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-16 w-auto object-contain" />
         </Link>
         
-        <div className="hidden md:flex items-center min-w-0 relative">
+        <div className="hidden md:flex items-center min-w-0 relative ml-auto">
           {hasOverflow && canScrollLeft && (
              <div className="absolute left-0 top-1/2 -translate-y-1/2 h-full w-12 bg-gradient-to-r from-background to-transparent pointer-events-none z-10 flex items-center">
               <ChevronLeft className="h-6 w-6 text-primary" />
@@ -198,7 +198,7 @@ export default function Header() {
           )}
         </div>
 
-        <div className="md:hidden">
+        <div className="md:hidden ml-auto">
           <Sheet open={isMobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">

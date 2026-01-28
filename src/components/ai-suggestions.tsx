@@ -47,7 +47,7 @@ export default function AiSuggestions() {
           <div className="bg-primary/10 p-2 rounded-full">
             <Sparkles className="h-6 w-6 text-primary" />
           </div>
-          <CardTitle className="font-headline">Mejore su Contenido con IA</CardTitle>
+          <CardTitle className="font-headline">Mejore su Contenido con IASCA</CardTitle>
         </div>
         <CardDescription>
           Pegue el texto de su sitio web a continuación para recibir sugerencias de mejora de SEO y participación del usuario.
