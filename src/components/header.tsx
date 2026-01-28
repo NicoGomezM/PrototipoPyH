@@ -44,23 +44,24 @@ export default function Header() {
   const scrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+  const [hasOverflow, setHasOverflow] = useState(false);
 
   const checkScrollability = useCallback(() => {
     const nav = navContainerRef.current;
     if (!nav) return;
-    
-    // Use a small tolerance to prevent floating point inaccuracies
+
     const tolerance = 2;
-    const hasOverflow = nav.scrollWidth > nav.clientWidth + tolerance;
+    const isOverflowing = nav.scrollWidth > nav.clientWidth + tolerance;
+    setHasOverflow(isOverflowing);
+
     setCanScrollLeft(nav.scrollLeft > tolerance);
-    setCanScrollRight(hasOverflow && nav.scrollLeft < nav.scrollWidth - nav.clientWidth - tolerance);
+    setCanScrollRight(isOverflowing && nav.scrollLeft < nav.scrollWidth - nav.clientWidth - tolerance);
   }, []);
 
   useEffect(() => {
     const nav = navContainerRef.current;
     if (!nav) return;
 
-    // Use setTimeout to ensure scroll reset happens after layout calculation
     const initialCheck = setTimeout(() => {
       nav.scrollLeft = 0;
       checkScrollability();
@@ -96,9 +97,7 @@ export default function Header() {
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const nav = navContainerRef.current;
-    if (!nav) return;
-
-    if (nav.scrollWidth <= nav.clientWidth) {
+    if (!nav || !hasOverflow) {
       stopScrolling();
       return;
     }
@@ -130,10 +129,10 @@ export default function Header() {
   }, [stopScrolling]);
 
   const NavLinks = ({ className, onLinkClick }: { className?: string; onLinkClick?: () => void }) => {
-    const linkClasses = "relative flex items-center gap-2 py-4 text-base font-medium uppercase tracking-wider transition-colors hover:text-primary after:absolute after:bottom-[-2px] after:left-0 after:h-[3px] after:w-0 after:bg-primary after:transition-all after:duration-250 after:ease-in-out after:content-[''] hover:after:w-full";
+    const linkClasses = "relative flex items-center gap-2 py-4 text-sm font-medium uppercase tracking-wider transition-colors hover:text-primary after:absolute after:bottom-[10px] after:left-0 after:h-[3px] after:w-0 after:bg-primary after:transition-all after:duration-250 after:ease-in-out after:content-[''] hover:after:w-full";
 
     return (
-      <nav className={cn('flex items-center gap-x-8', className)}>
+      <nav className={cn('flex items-center gap-x-6', className)}>
         {navigationLinks.map((link) => {
           const isActive = !link.external && pathname === link.href;
           if (link.external) {
@@ -173,9 +172,9 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-24 items-center justify-between">
+      <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex-shrink-0 flex items-center gap-2">
-          <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-16 object-contain" />
+          <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-14 w-auto object-contain" />
         </Link>
         
         <div className="hidden md:flex flex-1 items-center min-w-0 px-4 relative">
@@ -190,7 +189,7 @@ export default function Header() {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-            <NavLinks className="justify-center" onLinkClick={() => {}} />
+            <NavLinks className={!hasOverflow ? "justify-center" : "justify-start"} onLinkClick={() => {}} />
           </div>
            {canScrollRight && (
             <div className="absolute right-0 top-1/2 -translate-y-1/2 h-full w-12 bg-gradient-to-l from-background to-transparent pointer-events-none z-10 flex items-center justify-end">
@@ -210,7 +209,7 @@ export default function Header() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="p-4">
                 <Link href="/" className="flex items-center gap-2 mb-8" onClick={() => setMobileMenuOpen(false)}>
-                  <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-16 object-contain" />
+                  <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-14 w-auto object-contain" />
                 </Link>
                 <NavLinks className="flex-col items-start gap-4" onLinkClick={() => setMobileMenuOpen(false)} />
               </div>
