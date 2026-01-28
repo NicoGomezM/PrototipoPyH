@@ -48,36 +48,41 @@ export default function Header() {
   const checkScrollability = useCallback(() => {
     const nav = navContainerRef.current;
     if (!nav) return;
-
-    const hasOverflow = nav.scrollWidth > nav.clientWidth;
-    setCanScrollLeft(nav.scrollLeft > 0);
-    setCanScrollRight(hasOverflow && nav.scrollLeft < nav.scrollWidth - nav.clientWidth - 1);
+    
+    // Use a small tolerance to prevent floating point inaccuracies
+    const tolerance = 2;
+    const hasOverflow = nav.scrollWidth > nav.clientWidth + tolerance;
+    setCanScrollLeft(nav.scrollLeft > tolerance);
+    setCanScrollRight(hasOverflow && nav.scrollLeft < nav.scrollWidth - nav.clientWidth - tolerance);
   }, []);
 
   useEffect(() => {
     const nav = navContainerRef.current;
     if (!nav) return;
 
-    nav.scrollLeft = 0;
-
-    checkScrollability();
+    // Use setTimeout to ensure scroll reset happens after layout calculation
+    const initialCheck = setTimeout(() => {
+      nav.scrollLeft = 0;
+      checkScrollability();
+    }, 100);
 
     let resizeTimeout: NodeJS.Timeout;
     const handleResize = () => {
       clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(checkScrollability, 100);
+      resizeTimeout = setTimeout(() => {
+        nav.scrollLeft = 0;
+        checkScrollability();
+      }, 150);
     };
 
     window.addEventListener('resize', handleResize);
     nav.addEventListener('scroll', checkScrollability);
 
-    const initialCheckTimeout = setTimeout(checkScrollability, 250);
-
     return () => {
       window.removeEventListener('resize', handleResize);
       nav.removeEventListener('scroll', checkScrollability);
       clearTimeout(resizeTimeout);
-      clearTimeout(initialCheckTimeout);
+      clearTimeout(initialCheck);
     };
   }, [checkScrollability]);
 
@@ -125,7 +130,7 @@ export default function Header() {
   }, [stopScrolling]);
 
   const NavLinks = ({ className, onLinkClick }: { className?: string; onLinkClick?: () => void }) => {
-    const linkClasses = "relative flex items-center gap-2 py-2 font-medium uppercase tracking-wider transition-colors hover:text-primary after:absolute after:bottom-[-2px] after:left-0 after:h-[3px] after:w-0 after:bg-primary after:transition-all after:duration-250 after:ease-in-out after:content-[''] hover:after:w-full";
+    const linkClasses = "relative flex items-center gap-2 py-4 text-base font-medium uppercase tracking-wider transition-colors hover:text-primary after:absolute after:bottom-[-2px] after:left-0 after:h-[3px] after:w-0 after:bg-primary after:transition-all after:duration-250 after:ease-in-out after:content-[''] hover:after:w-full";
 
     return (
       <nav className={cn('flex items-center gap-x-8', className)}>
@@ -168,12 +173,12 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-20 items-center justify-between">
+      <div className="container flex h-24 items-center justify-between">
         <Link href="/" className="flex-shrink-0 flex items-center gap-2">
           <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-16 object-contain" />
         </Link>
         
-        <div className="hidden md:flex flex-1 justify-center items-center min-w-0 px-4 relative">
+        <div className="hidden md:flex flex-1 items-center min-w-0 px-4 relative">
           {canScrollLeft && (
              <div className="absolute left-0 top-1/2 -translate-y-1/2 h-full w-12 bg-gradient-to-r from-background to-transparent pointer-events-none z-10 flex items-center">
               <ChevronLeft className="h-6 w-6 text-primary" />
