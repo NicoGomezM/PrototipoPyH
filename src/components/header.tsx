@@ -51,7 +51,6 @@ export default function Header() {
 
     const hasOverflow = nav.scrollWidth > nav.clientWidth;
     setCanScrollLeft(nav.scrollLeft > 0);
-    // Add a small buffer to avoid floating point inaccuracies
     setCanScrollRight(hasOverflow && nav.scrollLeft < nav.scrollWidth - nav.clientWidth - 1);
   }, []);
 
@@ -59,10 +58,10 @@ export default function Header() {
     const nav = navContainerRef.current;
     if (!nav) return;
 
-    // Initial check
+    nav.scrollLeft = 0;
+
     checkScrollability();
 
-    // Debounced check on resize
     let resizeTimeout: NodeJS.Timeout;
     const handleResize = () => {
       clearTimeout(resizeTimeout);
@@ -72,7 +71,6 @@ export default function Header() {
     window.addEventListener('resize', handleResize);
     nav.addEventListener('scroll', checkScrollability);
 
-    // Also check after a short delay to account for font loading, etc.
     const initialCheckTimeout = setTimeout(checkScrollability, 250);
 
     return () => {
@@ -102,7 +100,7 @@ export default function Header() {
 
     const { left, width } = nav.getBoundingClientRect();
     const mouseX = e.clientX - left;
-    const scrollThreshold = width * 0.2; // 20% on each side
+    const scrollThreshold = width * 0.2; 
     const scrollAmount = 8;
 
     stopScrolling();
@@ -130,7 +128,7 @@ export default function Header() {
     const linkClasses = "relative flex items-center gap-2 py-2 text-sm font-medium uppercase tracking-wider transition-colors hover:text-primary after:absolute after:bottom-[-2px] after:left-0 after:h-[3px] after:w-0 after:bg-primary after:transition-all after:duration-250 after:ease-in-out after:content-[''] hover:after:w-full";
 
     return (
-      <nav className={cn('flex items-center gap-x-8', className)}>
+      <nav className={cn('flex items-center gap-x-6', className)}>
         {navigationLinks.map((link) => {
           const isActive = !link.external && pathname === link.href;
           if (link.external) {
@@ -170,9 +168,9 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-24 items-center justify-between">
+      <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex-shrink-0 flex items-center gap-2">
-          <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-20 object-contain" />
+          <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-16 object-contain" />
         </Link>
         
         <div className="hidden md:flex flex-1 justify-center items-center min-w-0 px-4 relative">
@@ -207,7 +205,7 @@ export default function Header() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="p-4">
                 <Link href="/" className="flex items-center gap-2 mb-8" onClick={() => setMobileMenuOpen(false)}>
-                  <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-28 object-contain" />
+                  <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-24 object-contain" />
                 </Link>
                 <NavLinks className="flex-col items-start gap-4" onLinkClick={() => setMobileMenuOpen(false)} />
               </div>
