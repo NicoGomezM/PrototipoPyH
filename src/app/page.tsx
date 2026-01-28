@@ -97,9 +97,9 @@ export default function Home() {
                 </Link>
               </Button>
             </div>
-            <div>
+            {/* <div>
               <AiSuggestions />
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

@@ -178,7 +178,7 @@ export default function Header() {
         </Link>
         
         <div className="hidden md:flex items-center min-w-0 relative">
-          {canScrollLeft && (
+          {hasOverflow && canScrollLeft && (
              <div className="absolute left-0 top-1/2 -translate-y-1/2 h-full w-12 bg-gradient-to-r from-background to-transparent pointer-events-none z-10 flex items-center">
               <ChevronLeft className="h-6 w-6 text-primary" />
             </div>
@@ -191,7 +191,7 @@ export default function Header() {
           >
             <NavLinks className={hasOverflow ? "justify-start" : "justify-center"} onLinkClick={() => {}} />
           </div>
-           {canScrollRight && (
+           {hasOverflow && canScrollRight && (
             <div className="absolute right-0 top-1/2 -translate-y-1/2 h-full w-12 bg-gradient-to-l from-background to-transparent pointer-events-none z-10 flex items-center justify-end">
               <ChevronRight className="h-6 w-6 text-primary" />
             </div>
