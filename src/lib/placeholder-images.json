@@ -1,3 +1,52 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-truck",
+      "description": "A large blue truck driving on a scenic highway at sunset.",
+      "imageUrl": "https://images.unsplash.com/photo-1709735133497-bbead76953a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx0cnVjayUyMGhpZ2h3YXl8ZW58MHx8fHwxNzY5NTIzMDk5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "truck highway"
+    },
+    {
+      "id": "gallery-1",
+      "description": "A fleet of modern trucks parked in a row.",
+      "imageUrl": "https://images.unsplash.com/photo-1620059116993-398c21ce8406?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8dHJ1Y2slMjBmbGVldHxlbnwwfHx8fDE3Njk1NDU0NTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "truck fleet"
+    },
+    {
+      "id": "gallery-2",
+      "description": "Close-up of a truck's wheel on an asphalt road.",
+      "imageUrl": "https://images.unsplash.com/photo-1692807381316-e51140a7a00f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx0cnVjayUyMHdoZWVsfGVufDB8fHx8MTc2OTYxNjMwN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "truck wheel"
+    },
+    {
+      "id": "gallery-3",
+      "description": "A truck being loaded with construction materials.",
+      "imageUrl": "https://images.unsplash.com/photo-1761526525850-0b2353bed345?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0cnVjayUyMGxvYWRpbmd8ZW58MHx8fHwxNzY5NTM0NTk2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "truck loading"
+    },
+    {
+      "id": "gallery-4",
+      "description": "Aerial view of a truck on a winding road.",
+      "imageUrl": "https://images.unsplash.com/photo-1708109353962-3b8262147aa6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0cnVjayUyMGFlcmlhbHxlbnwwfHx8fDE3Njk2MTYzMDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "truck aerial"
+    },
+    {
+      "id": "gallery-5",
+      "description": "A driver in the cabin of a modern truck.",
+      "imageUrl": "https://images.unsplash.com/photo-1600320254374-ce2d293c324e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0cnVjayUyMGRyaXZlcnxlbnwwfHx8fDE3Njk2MTYzMDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "truck driver"
+    },
+    {
+      "id": "gallery-6",
+      "description": "A white container truck on the move.",
+      "imageUrl": "https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb250YWluZXIlMjB0cnVja3xlbnwwfHx8fDE3Njk2MTYzMDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "container truck"
+    },
+    {
+      "id": "contact-image",
+      "description": "A person on the phone in a logistics office.",
+      "imageUrl": "https://images.unsplash.com/photo-1703669020898-428cc4765bbe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxvZmZpY2UlMjBjb250YWN0fGVufDB8fHx8MTc2OTYxNjMwN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "office contact"
+    }
+  ]
 }
