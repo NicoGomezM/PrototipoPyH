@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Truck, Tractor, Road } from 'lucide-react';
+import { Truck, Tractor, Package } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export const metadata: Metadata = {
@@ -29,7 +29,7 @@ export default function FlotaPage() {
             id: 'flota-carretera',
             title: 'Transporte Carretera',
             description: 'La empresa cuenta con camiones de carga equipados para transportar diversos productos a distintos destinos a lo largo de todo Chile.',
-            icon: <Road className="h-10 w-10 text-primary" />,
+            icon: <Package className="h-10 w-10 text-primary" />,
             imageHint: 'highway truck'
         },
     ];

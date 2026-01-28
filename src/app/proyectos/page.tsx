@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Building, Road, Factory } from 'lucide-react';
+import { Building, Truck, Factory } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Proyectos - Transportes Parra e Hijos',
@@ -30,7 +30,7 @@ export default function ProyectosPage() {
         </Card>
         <Card>
           <CardHeader>
-            <Road className="h-10 w-10 text-primary mb-2" />
+            <Truck className="h-10 w-10 text-primary mb-2" />
             <CardTitle>Obras de Infraestructura Vial</CardTitle>
           </CardHeader>
           <CardContent>
