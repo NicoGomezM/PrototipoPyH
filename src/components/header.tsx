@@ -174,10 +174,10 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex-shrink-0 flex items-center gap-2">
-          <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-14 w-auto object-contain" />
+          <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-16 w-auto object-contain" />
         </Link>
         
-        <div className="hidden md:flex flex-1 items-center min-w-0 px-4 relative">
+        <div className="hidden md:flex flex-1 items-center min-w-0 relative justify-end">
           {canScrollLeft && (
              <div className="absolute left-0 top-1/2 -translate-y-1/2 h-full w-12 bg-gradient-to-r from-background to-transparent pointer-events-none z-10 flex items-center">
               <ChevronLeft className="h-6 w-6 text-primary" />
@@ -185,11 +185,11 @@ export default function Header() {
           )}
           <div
             ref={navContainerRef}
-            className="w-full overflow-x-auto whitespace-nowrap no-scrollbar"
+            className="overflow-x-auto whitespace-nowrap no-scrollbar"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-            <NavLinks className={!hasOverflow ? "justify-center" : "justify-start"} onLinkClick={() => {}} />
+            <NavLinks className={"justify-start"} onLinkClick={() => {}} />
           </div>
            {canScrollRight && (
             <div className="absolute right-0 top-1/2 -translate-y-1/2 h-full w-12 bg-gradient-to-l from-background to-transparent pointer-events-none z-10 flex items-center justify-end">
