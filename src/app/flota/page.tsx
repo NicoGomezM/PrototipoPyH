@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Truck, Crane, Road } from 'lucide-react';
+import { Truck, Tractor, Road } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function FlotaPage() {
             id: 'flota-carguio',
             title: 'Carguío Forestal',
             description: 'Si la situación lo amerita, nuestra empresa cuenta con unidades de carguío forestal, que tienen la capacidad y autonomía de cargar sus propias unidades de transportes.',
-            icon: <Crane className="h-10 w-10 text-primary" />,
+            icon: <Tractor className="h-10 w-10 text-primary" />,
             imageHint: 'logging crane'
         },
         {
