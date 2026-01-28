@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { Menu } from 'lucide-react';
+import { Menu, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
@@ -28,6 +28,47 @@ export default function Header() {
   const pathname = usePathname();
   const navContainerRef = useRef<HTMLDivElement>(null);
   const scrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const checkScrollability = useCallback(() => {
+    const nav = navContainerRef.current;
+    if (!nav) return;
+
+    const hasOverflow = nav.scrollWidth > nav.clientWidth;
+    setCanScrollLeft(nav.scrollLeft > 0);
+    // Add a small buffer to avoid floating point inaccuracies
+    setCanScrollRight(hasOverflow && nav.scrollLeft < nav.scrollWidth - nav.clientWidth - 1);
+  }, []);
+
+  useEffect(() => {
+    const nav = navContainerRef.current;
+    if (!nav) return;
+
+    // Initial check
+    checkScrollability();
+
+    // Debounced check on resize
+    let resizeTimeout: NodeJS.Timeout;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(checkScrollability, 100);
+    };
+
+    window.addEventListener('resize', handleResize);
+    nav.addEventListener('scroll', checkScrollability);
+
+    // Also check after a short delay to account for font loading, etc.
+    const initialCheckTimeout = setTimeout(checkScrollability, 250);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      nav.removeEventListener('scroll', checkScrollability);
+      clearTimeout(resizeTimeout);
+      clearTimeout(initialCheckTimeout);
+    };
+  }, [checkScrollability]);
+
 
   const stopScrolling = useCallback(() => {
     if (scrollIntervalRef.current) {
@@ -40,7 +81,6 @@ export default function Header() {
     const nav = navContainerRef.current;
     if (!nav) return;
 
-    // Check if scrolling is needed
     if (nav.scrollWidth <= nav.clientWidth) {
       stopScrolling();
       return;
@@ -69,7 +109,6 @@ export default function Header() {
   };
 
   useEffect(() => {
-    // Cleanup interval on component unmount
     return () => stopScrolling();
   }, [stopScrolling]);
 
@@ -115,24 +154,32 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-32 items-center justify-between">
+      <div className="container flex h-40 items-center justify-between">
         <Link href="/" className="flex-shrink-0 flex items-center gap-2">
-          <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-28 object-contain" />
+          <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-36 object-contain" />
         </Link>
         
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex flex-1 justify-center items-center min-w-0 px-4">
+        <div className="hidden md:flex flex-1 justify-center items-center min-w-0 px-4 relative">
+          {canScrollLeft && (
+             <div className="absolute left-0 top-1/2 -translate-y-1/2 h-full w-12 bg-gradient-to-r from-background to-transparent pointer-events-none z-10 flex items-center">
+              <ChevronLeft className="h-6 w-6 text-primary" />
+            </div>
+          )}
           <div
             ref={navContainerRef}
-            className="w-full overflow-x-hidden"
+            className="w-full overflow-hidden whitespace-nowrap"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-            <NavLinks className="justify-center" onLinkClick={() => {}} />
+            <NavLinks className="justify-center px-8" onLinkClick={() => {}} />
           </div>
+           {canScrollRight && (
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 h-full w-12 bg-gradient-to-l from-background to-transparent pointer-events-none z-10 flex items-center justify-end">
+              <ChevronRight className="h-6 w-6 text-primary" />
+            </div>
+          )}
         </div>
 
-        {/* Mobile Navigation */}
         <div className="md:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
