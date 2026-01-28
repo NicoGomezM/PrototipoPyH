@@ -177,7 +177,7 @@ export default function Header() {
           <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-16 w-auto object-contain" />
         </Link>
         
-        <div className="hidden md:flex flex-1 items-center min-w-0 relative justify-end">
+        <div className="hidden md:flex items-center min-w-0 relative">
           {canScrollLeft && (
              <div className="absolute left-0 top-1/2 -translate-y-1/2 h-full w-12 bg-gradient-to-r from-background to-transparent pointer-events-none z-10 flex items-center">
               <ChevronLeft className="h-6 w-6 text-primary" />
@@ -189,7 +189,7 @@ export default function Header() {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-            <NavLinks className={"justify-start"} onLinkClick={() => {}} />
+            <NavLinks className={hasOverflow ? "justify-start" : "justify-center"} onLinkClick={() => {}} />
           </div>
            {canScrollRight && (
             <div className="absolute right-0 top-1/2 -translate-y-1/2 h-full w-12 bg-gradient-to-l from-background to-transparent pointer-events-none z-10 flex items-center justify-end">
