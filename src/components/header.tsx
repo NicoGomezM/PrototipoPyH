@@ -27,48 +27,54 @@ export default function Header() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  const NavLinks = ({ className }: { className?: string }) => (
-    <nav className={cn('flex items-center gap-4 lg:gap-6', className)}>
-      {navigationLinks.map((link) => {
-        const isActive = !link.external && pathname === link.href;
-        if (link.external) {
+  const NavLinks = ({ className }: { className?: string }) => {
+    const linkClasses =
+      "relative py-2 text-sm font-medium uppercase tracking-wider transition-colors hover:text-primary after:absolute after:bottom-[-2px] after:left-0 after:h-[3px] after:w-0 after:bg-primary after:transition-all after:duration-250 after:ease-in-out after:content-[''] hover:after:w-full";
+
+    return (
+      <nav className={cn('flex items-center gap-x-8', className)}>
+        {navigationLinks.map((link) => {
+          const isActive = !link.external && pathname === link.href;
+          if (link.external) {
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(linkClasses, 'whitespace-nowrap text-muted-foreground')}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            );
+          }
           return (
-            <a
+            <Link
               key={link.href}
               href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              className={cn(
+                linkClasses,
+                isActive ? 'text-primary' : 'text-muted-foreground',
+                'whitespace-nowrap'
+              )}
               onClick={() => setMobileMenuOpen(false)}
             >
               {link.label}
-            </a>
+            </Link>
           );
-        }
-        return (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={cn(
-              'text-sm font-medium transition-colors hover:text-primary',
-              isActive ? 'text-primary' : 'text-muted-foreground'
-            )}
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            {link.label}
-          </Link>
-        );
-      })}
-    </nav>
-  );
+        })}
+      </nav>
+    );
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-28 items-center justify-between">
+      <div className="container flex h-32 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={300} height={62} className="h-24 object-contain" />
+          <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-28 object-contain" />
         </Link>
-        <div className="hidden md:flex">
+        <div className="hidden md:flex overflow-x-auto">
           <NavLinks />
         </div>
         <div className="md:hidden">
@@ -82,7 +88,7 @@ export default function Header() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="p-4">
                 <Link href="/" className="flex items-center gap-2 mb-8" onClick={() => setMobileMenuOpen(false)}>
-                  <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={300} height={62} className="h-24 object-contain" />
+                  <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-28 object-contain" />
                 </Link>
                 <NavLinks className="flex-col items-start gap-4" />
               </div>
