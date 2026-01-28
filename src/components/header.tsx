@@ -3,7 +3,21 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { Menu, ChevronLeft, ChevronRight } from 'lucide-react';
+import {
+  Menu,
+  ChevronLeft,
+  ChevronRight,
+  Home,
+  Truck,
+  Shield,
+  Users,
+  Handshake,
+  HardHat,
+  Briefcase,
+  GalleryHorizontal,
+  Mail,
+  Mails,
+} from 'lucide-react';
 import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
@@ -11,16 +25,16 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 
 const navigationLinks = [
-  { href: '/', label: 'Inicio' },
-  { href: '/flota', label: 'Flota' },
-  { href: '/politica', label: 'Política' },
-  { href: '/clientes', label: 'Clientes' },
-  { href: '/rolsocial', label: 'Rol Social' },
-  { href: '/prevencion', label: 'Prevención' },
-  { href: '/proyectos', label: 'Proyectos' },
-  { href: '/galeria', label: 'Galería' },
-  { href: '/contacto', label: 'Contacto' },
-  { href: 'http://www.transportesparraehijos.cl/webmail', label: 'Webmail', external: true },
+  { href: '/', label: 'Inicio', icon: <Home className="h-4 w-4" /> },
+  { href: '/flota', label: 'Flota', icon: <Truck className="h-4 w-4" /> },
+  { href: '/politica', label: 'Política', icon: <Shield className="h-4 w-4" /> },
+  { href: '/clientes', label: 'Clientes', icon: <Users className="h-4 w-4" /> },
+  { href: '/rolsocial', label: 'Rol Social', icon: <Handshake className="h-4 w-4" /> },
+  { href: '/prevencion', label: 'Prevención', icon: <HardHat className="h-4 w-4" /> },
+  { href: '/proyectos', label: 'Proyectos', icon: <Briefcase className="h-4 w-4" /> },
+  { href: '/galeria', label: 'Galería', icon: <GalleryHorizontal className="h-4 w-4" /> },
+  { href: '/contacto', label: 'Contacto', icon: <Mail className="h-4 w-4" /> },
+  { href: 'http://www.transportesparraehijos.cl/webmail', label: 'Webmail', external: true, icon: <Mails className="h-4 w-4" /> },
 ];
 
 export default function Header() {
@@ -113,7 +127,7 @@ export default function Header() {
   }, [stopScrolling]);
 
   const NavLinks = ({ className, onLinkClick }: { className?: string; onLinkClick?: () => void }) => {
-    const linkClasses = "relative py-2 text-sm font-medium uppercase tracking-wider transition-colors hover:text-primary after:absolute after:bottom-[-2px] after:left-0 after:h-[3px] after:w-0 after:bg-primary after:transition-all after:duration-250 after:ease-in-out after:content-[''] hover:after:w-full";
+    const linkClasses = "relative flex items-center gap-2 py-2 text-sm font-medium uppercase tracking-wider transition-colors hover:text-primary after:absolute after:bottom-[-2px] after:left-0 after:h-[3px] after:w-0 after:bg-primary after:transition-all after:duration-250 after:ease-in-out after:content-[''] hover:after:w-full";
 
     return (
       <nav className={cn('flex items-center gap-x-8', className)}>
@@ -129,7 +143,8 @@ export default function Header() {
                 className={cn(linkClasses, 'whitespace-nowrap text-muted-foreground')}
                 onClick={onLinkClick}
               >
-                {link.label}
+                {link.icon}
+                <span>{link.label}</span>
               </a>
             );
           }
@@ -144,7 +159,8 @@ export default function Header() {
               )}
               onClick={onLinkClick}
             >
-              {link.label}
+              {link.icon}
+              <span>{link.label}</span>
             </Link>
           );
         })}
@@ -154,9 +170,9 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-40 items-center justify-between">
+      <div className="container flex h-24 items-center justify-between">
         <Link href="/" className="flex-shrink-0 flex items-center gap-2">
-          <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-36 object-contain" />
+          <Image src="/TpEh-HD.png" alt="Transportes Parra e Hijos" width={400} height={83} className="h-20 object-contain" />
         </Link>
         
         <div className="hidden md:flex flex-1 justify-center items-center min-w-0 px-4 relative">
@@ -167,11 +183,11 @@ export default function Header() {
           )}
           <div
             ref={navContainerRef}
-            className="w-full overflow-hidden whitespace-nowrap"
+            className="w-full overflow-x-auto whitespace-nowrap no-scrollbar"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-            <NavLinks className="justify-center px-8" onLinkClick={() => {}} />
+            <NavLinks className="justify-start px-8" onLinkClick={() => {}} />
           </div>
            {canScrollRight && (
             <div className="absolute right-0 top-1/2 -translate-y-1/2 h-full w-12 bg-gradient-to-l from-background to-transparent pointer-events-none z-10 flex items-center justify-end">
